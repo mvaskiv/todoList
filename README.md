@@ -1,12 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-``` Use right click on tasks for context menu which will let you to: 
+## Use right click on tasks for context menu which will let you to: 
+```
     1) Edit an entry (saves on blur)
     2) Delete it
 ```
 
 ```
-    Use the "Lists" button on the left hand side above the input field to reveal Menu of 'All, todo and done' lists
+    Use the "Lists" button on the left hand side above the input field
+    to reveal the Menu of 'All, todo and done' lists
 ```
 
 ## Available Scripts
