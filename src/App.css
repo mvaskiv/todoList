@@ -1,0 +1,483 @@
+
+
+* {
+  cursor: default;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline:none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.App {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eee;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.titleBar {
+  position: absolute;
+  top: 0px;
+  height: 22px;
+  background-color: #fafafa;
+  width: 100vw;
+  z-index: 99;
+}
+
+.context-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 140px;
+  height: 32px;
+  padding-left: 1px;
+  padding-right: 1px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px #e5e5e5;
+  border-radius: 5px;
+  z-index: 212;
+}
+
+p.context-menu-item {
+  width: 50%;
+  text-align: center;
+  color: #595959;
+  font-weight: 200;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  line-height: 32px;
+}
+.context-menu-item:hover {
+  background-color: #f1f1f1;
+  color: #444;
+}
+
+.App-header {
+  background-color: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.todos {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  max-height: 1000px;
+  max-width: 400px;
+  width: 400px;
+  background: #fafafa;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 45px rgba(19,19,19,0.2);
+  z-index: 153;
+  transition: all 200ms ease;
+}
+
+div.today {
+  position: relative;
+  min-height: 102px;
+  width: 100%;
+  background-color: #fafafa;
+  overflow: hidden;
+  transition: all 220ms ease-in-out;
+}
+
+h1.today {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  margin: 0;
+  font-size: 42px;
+  color: #c41313;
+  overflow: visible;
+}
+
+h3.today-date {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: 200;
+  color: #555;
+}
+p.expand-today {
+  position: absolute;
+  left: 15px;
+  bottom: 13px;
+  padding-left: 23px;
+  margin: 0;
+  color: #292929;
+  font-weight: 200;
+  transition: all 100ms ease-out;
+}
+p.expand-today:hover, p.expand-today:hover > .expand-list-icon {
+  fill: #c41313;
+  color: #c41313;
+}
+.expand-list-icon {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  margin: 0;
+  padding: 0;
+  fill: #292929;
+}
+.icon-list {
+  position: absolute;
+  left: 7px;
+  fill: #c41313;
+  top: 4.5px;
+  width: 32px;
+  transition: all 100ms linear;
+}
+.list-list-item {
+  flex: 1;
+  position: relative;
+  padding: 10px;
+  height: 25px;
+  padding-top: 7px;
+  flex-direction: row;
+  border-bottom: 1px solid #ddd;
+}
+.list-list-item:active {
+  background-color: #eee;
+}
+.list-item-name {
+  text-align: left;
+  direction: ltr;
+  line-height: 15px;
+  padding-bottom: 5px;
+  padding-left: 35px;
+  margin-top: 8px;
+  margin-left: 1px;
+  max-width: calc(100% - 20px);
+  font-size: 17px;
+  color: #494949;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  transition: all 100ms linear;
+}
+
+.list-item-count {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 100;
+  color: #c41313
+}
+
+.tasks-list {
+  position: relative;
+  top: 0px;
+  height: calc(100vh - 170px);
+  width: 100%;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: all 350ms ease;
+  direction: rtl;
+}
+
+.tasks-list::-webkit-scrollbar {
+  width: 2.5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c41313; 
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c41313; 
+}
+
+.task-list-item {
+  flex: 1;
+  position: relative;
+  padding: 12px;
+  height: auto;
+  padding-top: 7px;
+  flex-direction: row;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+  transition: all 135ms linear;
+}
+.task-item-text {
+  text-align: left;
+  direction: ltr;
+  line-height: 22px;
+  padding-bottom: 8px;
+  padding-left: 35px;
+  margin-left: 1px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  max-width: calc(100% - 20px);
+  font-size: 18px;
+  color: #393939;
+  overflow: hidden;
+  white-space: normal;
+  /* text-overflow: ellipsis; */
+  transition: all 100ms linear;
+  
+}
+
+.task-item-text.edit {
+  margin-top: 14px;
+  width: calc(100% - 37px);
+  background: none;
+  border: none;
+}
+
+.task-item-origin {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 100;
+  color: #bbb
+}
+
+
+.icon-done {
+    position: absolute;
+    left: 10px;
+    fill: #bbb;
+    top: 21px;
+    width: 25px;
+    transition: all 100ms linear;
+}
+
+.icon-done:hover, .icon-done-marked {
+  position: absolute;
+  fill: #c41313;
+  top: 19px;
+  width: 29px;
+  left: 8px;
+  transition: all 100ms linear;
+}
+
+.icon-done-compl {
+  position: absolute;
+  fill: #c41313;
+  top: 19px;
+  width: 29px;
+  left: 8px;
+  transition: all 100ms linear;
+}
+
+.icon-done:hover ~ .task-item-text, .compl {
+  color: #bbb!important;
+  transition: all 55ms linear;
+}
+
+.compl {
+  text-decoration: line-through!important;
+}
+
+.task-input-cnt {
+  direction: ltr;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  top: 0px;
+  margin-top: 0;
+  height: 58px;
+  width: 100vw;
+  max-width: 400px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 0px 5px #ccc;
+  padding: 5px;
+  padding-left: 0px;
+  background-color: #f7f7f7;
+  transition: all 150ms ease;
+  overflow: hidden;
+}
+
+.task-input-field {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: -5px;
+  font-size: 16px;
+  padding: 11px;
+  padding-left: 15px;
+  width: 100%;
+  max-width: 370px;
+
+  z-index: 100;
+  color: #393939;
+  background-color: #f7f7f7;
+  border: none!important;  
+}
+
+.task-search-field {
+  position: relative;
+  direction: ltr;
+  margin-top: 10px;
+  left: 0;
+  /* margin-top: -5px; */
+  font-size: 16px;
+  padding: 11px;
+  padding-left: 15px;
+  width: 100%;
+  max-width: 370px;
+  z-index: 100;
+  border-radius: 20px;
+  color: #393939;
+  background-color: #f2f2f2;
+  border: none!important;
+}
+
+.task-input-cnt:hover > .tag-Row {
+  margin-top: 8px;
+  margin-bottom: -4px;
+  transition: all 200ms ease;
+  transition-delay: 359ms;
+  background-color: #f7f7f7;
+}
+
+.task-input-field:focus ~ .tag-Row {
+  margin-top: 8px;
+  margin-bottom: -4px;
+  transition: all 200ms ease;
+
+  background-color: #f7f7f7;
+}
+
+.tag-Row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  overflow: hidden;
+  overflow-x: scroll;
+  margin-top: -30px;
+  padding-top: 7px;
+  padding-left: 8px;
+  margin-right: 70px;
+  background-color: #f7f7f7;
+  width: 100%;
+  transition: all 250ms ease;
+}
+
+.tags-place {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  padding-left: 15px;
+  font-size: 15px;
+  height: 25px;
+  color: #999;
+  background-color: #f7f7f7;
+  width: 100%;
+  text-align: left;
+  z-index: 100;
+  margin: 0;
+  margin-bottom: 0px;
+}
+
+p.tags-place {
+  position: absolute;
+  top: 0px;
+  left: 00px;
+}
+
+.task-time {
+  position: absolute;
+  top: 37px;
+  z-index: 101;
+  right: -50px;
+  padding-right: 20px;
+}
+
+.tag {
+  overflow: hidden;
+  background-color: #f7f7f7;
+  border: 1px solid #c41313;
+  border-radius: 12px;
+  top: -4px;
+  left: 1px;
+  font-size: 13px;
+  padding: 2px;
+  height: 17px;
+  padding-left: 6px;
+  padding-right: 8px;
+  color: #c41313;
+  z-index: 100;
+  margin: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  transition: all 50ms linear;
+}
+
+.tag:hover {
+  background-color: #c41313;
+  color: #fff;
+  transition: all 50ms linear;
+}
+
+.task-submit {
+  position: absolute;
+  width: 50px;
+  text-align: right;
+  right: 5px;
+  padding-right: 14px;
+  height: 20px;
+  top: 31px;
+  background: #f7f7f7;
+  border: none;
+  color: #c41313;
+  font-size: 14px;
+  line-height: 10px;
+  transition: all 100ms ease;
+  z-index: 150;
+}
+.task-submit:active {
+  color: rgba(196,19,19,0.5);
+  transition: all 100ms ease;
+}
+
